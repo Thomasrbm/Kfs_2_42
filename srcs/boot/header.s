@@ -1,4 +1,5 @@
-section .multiboot_header
+section .multiboot_header 
+align 8 ; iso align sur 64
     header_start:
         dd 0xe85250d6
         dd 0
