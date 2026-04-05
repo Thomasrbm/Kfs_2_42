@@ -59,6 +59,31 @@ void handle_screen(int scancode)
 	}
 }
 
+void	handle_enter()
+{
+	char *tmp_cmd;
+	int	tmp_cursor; 
+
+	printk("HERE", YELLOW_ON_BLACK);
+	tmp_cursor = g_prompt_col;
+	while ((g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + tmp_cursor] & 0xFF) != ' ')
+	{
+		printk("YUP%d", RED_ON_BLACK, tmp_cursor);
+		tmp_cmd = (g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + g_cursor_col[g_screen]] & 0xFF);
+		tmp_cursor++;
+	}
+	printk("tmp_cmd = %s", MAGENTA_ON_BLACK, tmp_cmd);
+	if (tmp_cmd == "clear")
+		clear();
+	else
+	{
+		if (g_cursor_line[g_screen] == BUFFER_LINES)
+		return ;
+		newline();
+		print_prompt();
+	}
+}
+
 void process_key(uint8_t scancode)
 {   
 	char c = scancode_to_ascii(scancode);
@@ -70,12 +95,7 @@ void process_key(uint8_t scancode)
 	else if (scancode ==  SCREEN_1 || scancode ==  SCREEN_3 || scancode ==  SCREEN_2)
 		handle_screen(scancode);
 	else if (c == '\n')
-	{
-		if (g_cursor_line[g_screen] == BUFFER_LINES)
-			return ;
-		newline();
-		print_prompt();
-	}
+		handle_enter();
 	else if (scancode == LEFT)
 	{
 		if (g_cursor_col[g_screen] > g_prompt_col)

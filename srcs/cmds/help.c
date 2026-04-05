@@ -1,0 +1,16 @@
+
+#include "cmds.h"
+
+void    help_cmd()
+{
+    printk("Available commands:\n", MAGENTA_ON_BLACK);
+    printk("help     - show this help\n", LIGHT_MAGENTA_ON_BLACK);
+    printk("clear    - clear the screen\n", LIGHT_MAGENTA_ON_BLACK);
+    printk("reboot   - reboot the machine\n", LIGHT_MAGENTA_ON_BLACK);
+    printk("halt     - halt the CPU\n", LIGHT_MAGENTA_ON_BLACK);
+    printk("poweroff - power off the machine\n", LIGHT_MAGENTA_ON_BLACK);
+}
+
+
+  
+  

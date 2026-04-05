@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdarg.h> 
+#include "../cmds/cmds.h"
+
 
 // inline ca copie colle l instruction tel quel, sinon ca aligne + call + ret etc pas opti
 // instruction : sortie : entree
@@ -49,13 +51,24 @@ static inline uint8_t inb(uint16_t port)
 
 #define LEFT			0x4B
 #define RIGHT			0x4D
-
 #define UP				0x48
 #define DOWN			0x50
+
 #define WHITE_ON_BLACK        0x0F
 #define LIGHT_GREEN_ON_BLACK  0x0A
 #define LIGHT_CYAN_ON_BLACK   0x0B
 #define YELLOW_ON_BLACK       0x0E
+#define RED_ON_BLACK          0x04
+#define LIGHT_RED_ON_BLACK    0x0C
+#define MAGENTA_ON_BLACK      0x05
+#define LIGHT_MAGENTA_ON_BLACK 0x0D
+#define BLUE_ON_BLACK         0x01
+#define LIGHT_BLUE_ON_BLACK   0x09
+#define BROWN_ON_BLACK        0x06
+#define LIGHT_GREY_ON_BLACK   0x07
+#define DARK_GREY_ON_BLACK    0x08
+
+
 #define BUFFER_LINES	      200
 
 #define SCREEN_1    0x3B
@@ -86,3 +99,4 @@ void handle_shell(void);
 void process_key(uint8_t scancode);
 
 void print_number(int nb, uint8_t color);
+void backbuffer_putstr(char *str, uint8_t color);
