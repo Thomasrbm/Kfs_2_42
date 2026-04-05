@@ -1,5 +1,5 @@
-32 bits
-
+bits 32
+ 
 ; load la nouvelle gdt
 ; flush les ancienc registres de section et les reload.
 
@@ -37,3 +37,6 @@ gdt_flush:
 	
 flush:
 	ret
+
+
+section .note.GNU-stack noalloc noexec nowrite progbits

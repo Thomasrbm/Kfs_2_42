@@ -1,9 +1,10 @@
-ASM_SOURCES := $(shell find srcs/boot -name '*.s')
-C_SOURCES := $(shell find srcs/shell -name '*.c')
-OBJS := $(patsubst srcs/boot/%.s, objs/boot/%.o, $(ASM_SOURCES))
+ASM_SOURCES := $(shell find srcs -name '*.s')
+C_SOURCES := $(shell find srcs -name '*.c')
+
+OBJS := $(patsubst srcs/%.s, objs/%.o, $(ASM_SOURCES))
 OBJS += $(patsubst srcs/%.c, objs/%.o, $(C_SOURCES))
 
-objs/boot/%.o: srcs/boot/%.s
+objs/%.o: srcs/%.s
 	@mkdir -p $(dir $@)
 	nasm -f elf32 $< -o $@
 

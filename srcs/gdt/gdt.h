@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include "../utils/utils.h"
 
 typedef struct s_gdt_entry
 {
@@ -17,3 +18,6 @@ typedef struct s_gdt_ptr
 	uint16_t limit;
 	uint32_t base;
 } __attribute__((packed)) t_gdt_ptr;
+
+
+void gdt_flush(t_gdt_ptr *ptr);

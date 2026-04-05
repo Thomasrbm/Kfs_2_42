@@ -85,7 +85,7 @@ void gdt_init()
 	g_gdt_ptr.base = 0x00000800;
 	g_gdt_ptr.limit = sizeof(g_gdt) - 1; // limit = dernier bit valide, pas la taille. ex 56 taille = 0 a 55. 55 dernier bit valide
 
-	memcpy((void*)0x00000800, g_gdt, sizeof(g_gdt)); // place vraiment a l adresse
+	ft_memcpy((void*)0x00000800, g_gdt, sizeof(g_gdt)); // place vraiment a l adresse
 
 	gdt_flush(&g_gdt_ptr);
 }	
