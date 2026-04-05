@@ -17,3 +17,12 @@ user/kernel.
 OU 
 
 // 0x1 en limit
+
+
+
+
+----- taille 
+
+
+
+du -sh /home/throbert/Desktop/Code/Kfs_2_42/ && du -sh /home/throbert/Desktop/Code/Kfs_2_42/*/ 2>/dev/null | sort -rh
