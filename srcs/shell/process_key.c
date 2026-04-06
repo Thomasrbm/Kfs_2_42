@@ -59,26 +59,56 @@ void handle_screen(int scancode)
 	}
 }
 
-void	handle_enter()
+bool handle_cmd(char * tmp_cmd)
 {
-	char *tmp_cmd;
-	int	tmp_cursor; 
-
-	printk("HERE", YELLOW_ON_BLACK);
-	tmp_cursor = g_prompt_col;
-	while ((g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + tmp_cursor] & 0xFF) != ' ')
+	if (!strcmpk(tmp_cmd, "clear"))
 	{
-		printk("YUP%d", RED_ON_BLACK, tmp_cursor);
-		tmp_cmd = (g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + g_cursor_col[g_screen]] & 0xFF);
-		tmp_cursor++;
-	}
-	printk("tmp_cmd = %s", MAGENTA_ON_BLACK, tmp_cmd);
-	if (tmp_cmd == "clear")
 		clear();
+		return true;
+	}	
+	if (!strcmpk(tmp_cmd, "powershell"))
+	{
+		clear();
+		return true;
+	}	
+	if (!strcmpk(tmp_cmd, "reboot"))
+	{
+		clear();
+		return true;
+	}	
+	if (!strcmpk(tmp_cmd, "help"))
+	{
+		help_cmd();
+		return true;
+	}	
+	if (!strcmpk(tmp_cmd, "halt"))
+	{
+		help_cmd();
+		return true;
+	}	
+	return false;
+}
+
+void    handle_enter()
+{
+    char tmp_cmd[10];
+    int tmp_cursor; 
+    tmp_cursor = g_prompt_col;
+    int i = 0;
+    while ((g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + tmp_cursor] & 0xFF) != ' ')
+    {
+        tmp_cmd[i] = (g_backbuffer[g_screen][g_cursor_line[g_screen] * VGA_WIDHT + tmp_cursor] & 0xFF);
+        i++;
+        tmp_cursor++;
+    }
+    tmp_cmd[i] = '\0';
+    printk("cmd:[%s] prompt:%d cursor:%d i:%d", WHITE_ON_BLACK, tmp_cmd, g_prompt_col, g_cursor_col[g_screen], i);
+	if (handle_cmd(tmp_cmd))
+		return ;
 	else
 	{
 		if (g_cursor_line[g_screen] == BUFFER_LINES)
-		return ;
+			return ;
 		newline();
 		print_prompt();
 	}

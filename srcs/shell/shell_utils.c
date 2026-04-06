@@ -50,3 +50,22 @@ void print_number(int nb, uint8_t color)
 	backbuffer_fill_char(g_cursor_line[g_screen], g_cursor_col[g_screen], (nb % 10) + '0', color);
 	g_cursor_col[g_screen]++;
 }
+
+
+int     strlenk(const char *s)
+{
+	int i;
+	i = 0;
+	while (s[i])
+		i++;
+	return i;
+}
+
+int     strcmpk(const char *a, const char *b)
+{
+	int i;
+	i = 0;
+	while (a[i] && a[i] == b[i])
+		i++;
+	return a[i] - b[i];
+}
