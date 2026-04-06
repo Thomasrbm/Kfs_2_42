@@ -1,7 +1,7 @@
 
 #include "cmds.h"
 
-void    help_cmd()
+void    cmd_help()
 {
     g_cursor_col[g_screen] = g_prompt_col;
     printk("Available commands:\n", MAGENTA_ON_BLACK);

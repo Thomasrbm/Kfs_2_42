@@ -48,7 +48,7 @@ void printk(char *str, uint8_t color, ...)
 			}
 			else if (*str == 'c')
 			{
-				backbuffer_fill_char(g_cursor_line[g_screen] ,g_cursor_col[g_screen], va_arg(bonus_args, char), YELLOW_ON_BLACK);
+				backbuffer_fill_char(g_cursor_line[g_screen] ,g_cursor_col[g_screen], va_arg(bonus_args, int), YELLOW_ON_BLACK); // sinon warning dit que char devient int avec les variadique
 				str++;
 			}
 			else if (*str == 's')

@@ -33,6 +33,12 @@ static inline uint8_t inb(uint16_t port)
 }
 
 
+static inline void outw(uint16_t port, uint16_t val)
+{
+    __asm__ volatile("outw %0, %1" : : "a"(val), "Nd"(port));
+}
+
+
 #define VGA_ADDR 0xB8000
 #define VGA_WIDHT 80
 #define VGA_HEIGHT 25
@@ -100,3 +106,6 @@ void process_key(uint8_t scancode);
 
 void print_number(int nb, uint8_t color);
 void backbuffer_putstr(char *str, uint8_t color);
+
+int     strlenk(const char *s);
+int     strcmpk(const char *a, const char *b);

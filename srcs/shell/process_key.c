@@ -66,24 +66,24 @@ bool handle_cmd(char * tmp_cmd)
 		clear();
 		return true;
 	}	
-	if (!strcmpk(tmp_cmd, "powershell"))
+	if (!strcmpk(tmp_cmd, "poweroff"))
 	{
-		clear();
+		cmd_poweroff();
 		return true;
 	}	
 	if (!strcmpk(tmp_cmd, "reboot"))
 	{
-		clear();
+		cmd_reboot();
 		return true;
 	}	
 	if (!strcmpk(tmp_cmd, "help"))
 	{
-		help_cmd();
+		cmd_help();
 		return true;
 	}	
-	if (!strcmpk(tmp_cmd, "halt"))
+	if (!strcmpk(tmp_cmd, "hlt"))
 	{
-		help_cmd();
+		cmd_halt();
 		return true;
 	}	
 	return false;
