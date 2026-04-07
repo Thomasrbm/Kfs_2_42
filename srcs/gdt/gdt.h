@@ -27,3 +27,4 @@ void gdt_flush(t_gdt_ptr *ptr);
 
 static t_gdt_entry g_gdt[7];
 static t_gdt_ptr g_gdt_ptr;
+void    DumpHex(const void *data, int size);
