@@ -45,16 +45,19 @@ void printk(char *str, uint8_t color, ...)
 			{
 				print_number(va_arg(bonus_args, int), YELLOW_ON_BLACK);
 				str++;
+				continue;
 			}
 			else if (*str == 'c')
 			{
 				backbuffer_fill_char(g_cursor_line[g_screen] ,g_cursor_col[g_screen], va_arg(bonus_args, int), YELLOW_ON_BLACK); // sinon warning dit que char devient int avec les variadique
 				str++;
+				continue;
 			}
 			else if (*str == 's')
 			{
 				backbuffer_putstr(va_arg(bonus_args, char *), YELLOW_ON_BLACK);
 				str++;
+				continue;
 			}
 			else 
 				str--;

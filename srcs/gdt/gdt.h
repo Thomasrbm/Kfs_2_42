@@ -2,6 +2,9 @@
 
 #include <stdint.h>
 #include "../utils/utils.h"
+#include "../shell/handle_shell.h"
+
+
 
 typedef struct s_gdt_entry
 {
@@ -21,3 +24,6 @@ typedef struct s_gdt_ptr
 
 
 void gdt_flush(t_gdt_ptr *ptr);
+
+static t_gdt_entry g_gdt[7];
+static t_gdt_ptr g_gdt_ptr;

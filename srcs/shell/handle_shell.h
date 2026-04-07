@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdarg.h> 
 #include "../cmds/cmds.h"
-
+#include "../gdt/gdt.h"
 
 // inline ca copie colle l instruction tel quel, sinon ca aligne + call + ret etc pas opti
 // instruction : sortie : entree

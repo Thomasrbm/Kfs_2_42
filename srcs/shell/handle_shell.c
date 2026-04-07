@@ -56,6 +56,10 @@ void handle_shell(void)
 
 	init_backbuffer();
 	welcome_prompt();
+	// Juste après gdt_init()
+	DumpHex((void*)0x800, sizeof(g_gdt));   // ce qui est à 0x800       // la source originale
+	print_prompt();
+	refresh_g_screen();
 	while(1)
 	{
 		while (!(inb(KB_STATUS_PORT) & 0x01))

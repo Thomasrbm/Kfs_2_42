@@ -102,7 +102,6 @@ void    handle_enter()
         tmp_cursor++;
     }
     tmp_cmd[i] = '\0';
-    printk("cmd:[%s] prompt:%d cursor:%d i:%d", WHITE_ON_BLACK, tmp_cmd, g_prompt_col, g_cursor_col[g_screen], i);
 	if (handle_cmd(tmp_cmd))
 		return ;
 	else
